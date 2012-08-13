@@ -37,6 +37,9 @@ BODY {
 	color:rgb(62,62,62);
 	}
 
+.nonumbers .full .slide:after{
+	content: '';
+}
 /* Header */
 .slide header {
 	margin:0 0 58px;
