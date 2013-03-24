@@ -15,11 +15,11 @@ BODY {
 
 body:after {
 	position:absolute;
-	top:0;
-	right:10px;
-	width:153px;
-	height:41px;
-	background:url(../images/tab-2.png);
+	top: 0;
+	right: 10px;
+	width: 153px;
+	height: 41px;
+	background: url(../images/tab-2.png);
 	content:'';
 	}
 
@@ -38,9 +38,83 @@ body:after {
 	color:rgb(62,62,62);
 	}
 
+/* 
+	No numbering in the progress bar:
+  add "nonumbers" class to <html> 
+*/
 .nonumbers .full .slide:after{
 	content: '';
 	}
+
+/* 
+	Smooth fading in between slides: 
+	add "fade" class to <html>
+*/
+.fade .full .slide section {
+	-webkit-transition: opacity 1s;
+		 -moz-transition: opacity 1s;
+	    -ms-transition: opacity 1s;
+       -o-transition: opacity 1s;
+	        transition: opacity 1s;
+  opacity: 0;
+}
+.fade .full .slide:target section { 
+	opacity: 1; 
+}
+.fade .full .slide { 
+	background: url(../images/bg-sandstone-2.png); 
+}
+/* 
+	Picture frame
+*/
+.frame {
+	display:block;
+}
+.shadow {
+	 box-shadow: 5px 10px 10px rgba(0,0,0,.35);
+}
+.frame img {
+
+  border: 5px solid #f8f8f8; z-index: 2; display: block; 
+}
+.frame::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -10px;
+  width: 20px;
+  height: 20px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg );
+  -ms-transform: rotate(45deg );
+  -o-transform: rotate(45deg );
+  transform: rotate(45deg);
+  border-style: solid;
+  border-color: #666;
+  border-width: 1px 0 0 1px;
+}
+.frame::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-image: 
+    -webkit-linear-gradient(top, #f1f1f1 0%, #333 80%, #000 95%);
+  background-image:
+    -moz-linear-gradient(to bottom, #f1f1f1 0%, #333 80%, #000 95%);
+  background-image: 
+    linear-gradient(to bottom, #f1f1f1 0%, #333 80%, #000 95%);
+  border-radius: 50%;
+  border: 1px solid #666;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  margin-left: -3px;
+}
+
+
 
 /* Header */
 .slide header {
@@ -97,6 +171,7 @@ body:after {
 /* Quote */
 .slide blockquote {
 	font-style:italic;
+	font-size: 35px;
 	}
 .slide blockquote:before {
 	position:absolute;
@@ -105,6 +180,10 @@ body:after {
 	font:200px/1 'Open Sans', sans-serif;
 	content:'\201C'; /* ldquo */
 	}
+blockquote .quotesource {
+	font-size: 20px;
+	text-align: right;
+}
 
 /* Lists */
 .slide ol,
@@ -135,6 +214,17 @@ body:after {
 		counter-increment:list;
 		content:counter(list)'.';
 		}
+  /* Inner navigation */
+  .inner li {
+    opacity: 0.05;
+    -webkit-transition: opacity 1s;
+	     -moz-transition: opacity 1s;
+	       -o-transition: opacity 1s;
+            transition: opacity 1s;
+	  }
+  .inner .active {
+    opacity: 1;
+  }
 
 /* Code */
 .slide pre {
@@ -187,7 +277,9 @@ body:after {
 	}
 	.slide.cover .byline {
 		color: #fff;
+		background:rgba(0,0,0,0.7);
 		text-align: right;
+		padding: 5px 10px;
 		position: absolute;
 		bottom: 10px;
 		right: 10px;
@@ -258,6 +350,7 @@ body:after {
 	-o-transform:translate(-50%, -50%);
 	transform:translate(-50%, -50%);
 	}
+	
 
 /* List
 ---------------------------------------- */
@@ -387,7 +480,7 @@ body:after {
 			}
 		.full .slide:after {
 			position:absolute;
-			bottom:48px;
+			bottom:20px;
 			right:90px;
 			font-size: 16px;
 			color:rgba(62,62,62,0.6);
@@ -399,6 +492,7 @@ body:after {
 			-ms-transform:scale(1);
 			-o-transform:scale(1);
 			transform:scale(1);
+			padding: 40px 120px;
 			}
 		.full .slide.cover {
 			z-index:1;
@@ -412,7 +506,7 @@ body:after {
 .full .progress {
 	position:absolute;
 	right:118px;
-	bottom:49px;
+	bottom:20px;
 	left:118px;
 	border-radius:2px;
 	border:2px solid rgba(62,62,62, 0.3);
@@ -433,20 +527,32 @@ body:after {
 	}
 	
 /* special content styles */
+.full .talkdescription {
+	display: none;
+}
+
 .byline{
 	position: absolute;
 	font-size: 15px;
 	text-align: right;
-	width: 750px;
-	top: 140px;
+	bottom: 70px;
+	right: 125px;
 	}
 .right {
 	float: right;
+	padding-left: 20px;
+	position: relative;
+	}
+.left {
+	float: left;
+	position: relative;
+	padding-right: 100px;
 	}
 .credits {
-	font-size: 10px;
+	font-size: 12px;
 	position: absolute;
-	bottom: 10px;
+	bottom: 40px;
+	left: 120px;
 	}
 .demourl {
 	font-size: 18px;
@@ -468,11 +574,33 @@ body:after {
 .longlist {
 	font-size: 20px;
 	}
-.slide ul.longlist > li:before {
+.slide ul.longlist  li:before {
 	content:'\2022'; /* bull */
 	line-height:1.1;
 	font-size:30px;
 	}
+
+ul.oneline li { 
+	display: inline; 
+	padding-right: 1em; 
+	}
+ul.oneline li::before, ul.inner li::before { 
+	content: '';
+}
+ul.inline li { 
+	display: inline; 
+	padding-right: 0.2em; 
+	}
+ul.inline li::before { 
+	content: '';
+	}
+ul.inline li::after { 
+	content: ', ';
+	}
+ul.inline li:last-child::after {	
+	content: '.';	
+	}
+
 /* Notes */		
 .full .notes {
 	display:none;
@@ -494,4 +622,54 @@ body:after {
 }
 .list .slide:hover .notes {
 	bottom: 15px;
+}
+
+/* Live demos */
+
+* [contenteditable] {
+    display: block;
+    white-space: pre;
+    padding: 10px;
+    transition: 1s;
+    -webkit-transition: 1s;
+  }
+* [contenteditable]:focus {
+  background: #f8f8f8;
+
+}
+
+/* 	Animations */
+
+.full .slide:target .swing {
+  -moz-animation: swing linear 2s infinite;
+  -moz-transform-origin: 0 -55%;
+  -webkit-animation: swing ease-in-out 2s infinite;
+  -webkit-transform-origin: 0 -55%;
+  -o-animation: swing ease-in-out 2s infinite;
+  -o-transform-origin: 0 -55%;
+  animation: swing ease-in-out 2s infinite;
+  transform-origin: 0 -55%;
+}
+@-moz-keyframes swing {
+  0%   { -moz-transform: rotate3d(0deg,0,0) translate3d(-50%, -50%, 0); }
+  25%  { -moz-transform: rotate(3deg) translate(-50%, -50%); }
+  50%  { -moz-transform: rotate(0deg) translate(-50%, -50%); }
+  75%  { -moz-transform: rotate(-3deg) translate(-50%, -50%); }
+  100% { -moz-transform: rotate(0deg) translate(-50%, -50%); }
+}
+@-webkit-keyframes swing {
+  0%   {-webkit-transform: rotate(-3deg) translate(-50%, -50%); }
+  50%  {-webkit-transform: rotate(3deg) translate(-50%, -50%); }
+  100% {-webkit-transform: rotate(-3deg) translate(-50%, -50%); }
+}
+
+@-o-keyframes swing {
+  0%   { -o-transform: rotate(-3deg) translate(-50%, -50%); }
+  50%  { -o-transform: rotate(3deg) translate(-50%, -50%); }
+  100% { -o-transform: rotate(-3deg) translate(-50%, -50%); }
+}
+@keyframes swing {
+  0%   { transform: rotate(-3deg) translate(-50%, -50%); }
+  50%  { transform: rotate(3deg) translate(-50%, -50%); }
+  100% { transform: rotate(-3deg) translate(-50%, -50%); }
 }

@@ -1,298 +1,316 @@
 (function () {
-	var url = window.location,
-		body = document.body,
-		slides = document.querySelectorAll('div.slide'),
-		progress = document.querySelector('div.progress div'),
-		slideList = [],
-		l = slides.length, i;
+  var url = window.location,
+    body = document.body,
+    slides = document.querySelectorAll('div.slide'),
+    progress = document.querySelector('div.progress div'),
+    slideList = [],
+    l = slides.length, i;
+  if (typeof keysalive === 'undefined') {
+    keysalive = true;
+  }
 
-	for (i = 0; i < l; i++) {
-		slideList.push({
-			id: slides[i].id,
-			hasInnerNavigation: null !== slides[i].querySelector('.inner')
-		});
-	}
+  for (i = 0; i < l; i++) {
+    slideList.push({
+      id: slides[i].id,
+      hasInnerNavigation: null !== slides[i].querySelector('.inner')
+    });
+  }
 
-	function getTransform() {
-		var denominator = Math.max(
-			body.clientWidth / window.innerWidth,
-			body.clientHeight / window.innerHeight
-		);
+  var demos = document.querySelectorAll('[contenteditable]'),
+      alldemos = demos.length;
 
-		return 'scale(' + (1 / denominator) + ')';
-	}
+  function dokeys(ev) {
+    keysalive = true;
+  }
+  function stopkeys(ev) {
+    keysalive = false;
+  }
+  while (alldemos--) {
+    demos[alldemos].addEventListener('focus', stopkeys, false);
+    demos[alldemos].addEventListener('blur', dokeys, false);
+  }
 
-	function applyTransform(transform) {
-		body.style.WebkitTransform = transform;
-		body.style.MozTransform = transform;
-		body.style.msTransform = transform;
-		body.style.OTransform = transform;
-		body.style.transform = transform;
-	}
+  function getTransform() {
+    var denominator = Math.max(
+      body.clientWidth / window.innerWidth,
+      body.clientHeight / window.innerHeight
+    );
 
-	function enterSlideMode() {
-		body.className = 'full';
-		applyTransform(getTransform());
-	}
+    return 'scale(' + (1 / denominator) + ')';
+  }
 
-	function enterListMode() {
-		body.className = 'list';
-		applyTransform('none');
-	}
+  function applyTransform(transform) {
+    body.style.WebkitTransform = transform;
+    body.style.MozTransform = transform;
+    body.style.msTransform = transform;
+    body.style.OTransform = transform;
+    body.style.transform = transform;
+  }
 
-	function getCurrentSlideNumber() {
-		var i, l = slideList.length,
-			currentSlideId = url.hash.substr(1);
+  function enterSlideMode() {
+    body.className = 'full';
+    applyTransform(getTransform());
+  }
 
-		for (i = 0; i < l; ++i) {
-			if (currentSlideId === slideList[i].id) {
-				return i;
-			}
-		}
+  function enterListMode() {
+    body.className = 'list';
+    applyTransform('none');
+  }
 
-		return -1;
-	}
+  function getCurrentSlideNumber() {
+    var i, l = slideList.length,
+      currentSlideId = url.hash.substr(1);
 
-	function scrollToSlide(slideNumber) {
-		if (-1 === slideNumber ) { return; }
+    for (i = 0; i < l; ++i) {
+      if (currentSlideId === slideList[i].id) {
+        return i;
+      }
+    }
 
-		var currentSlide = document.getElementById(slideList[slideNumber].id);
+    return -1;
+  }
 
-		if (null != currentSlide) {
-			window.scrollTo(0, currentSlide.offsetTop);
-		}
-	}
+  function scrollToSlide(slideNumber) {
+    if (-1 === slideNumber ) { return; }
 
-	function isListMode() {
-		return 'full' !== url.search.substr(1);
-	}
+    var currentSlide = document.getElementById(slideList[slideNumber].id);
 
-	function normalizeSlideNumber(slideNumber) {
-		if (0 > slideNumber) {
-			return slideList.length - 1;
-		} else if (slideList.length <= slideNumber) {
-			return 0;
-		} else {
-			return slideNumber;
-		}
-	}
+    if (null !== currentSlide) {
+      window.scrollTo(0, currentSlide.offsetTop);
+    }
+  }
 
-	function updateProgress(slideNumber) {
-		if (null === progress) { return; }
-		progress.style.width = (100 / (slideList.length - 1) * normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
-	}
+  function isListMode() {
+    return 'full' !== url.search.substr(1);
+  }
 
-	function getSlideHash(slideNumber) {
-		return '#' + slideList[normalizeSlideNumber(slideNumber)].id;
-	}
+  function normalizeSlideNumber(slideNumber) {
+    if (0 > slideNumber) {
+      return slideList.length - 1;
+    } else if (slideList.length <= slideNumber) {
+      return 0;
+    } else {
+      return slideNumber;
+    }
+  }
 
-	function goToSlide(slideNumber) {
-		url.hash = getSlideHash(slideNumber);
-		lognotes(slideNumber);
-		if (!isListMode()) {
-			updateProgress(slideNumber);
-		}
+  function updateProgress(slideNumber) {
+    if (null === progress) { return; }
+    progress.style.width = (100 / (slideList.length - 1) * normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
+  }
 
-	}
+  function getSlideHash(slideNumber) {
+    return '#' + slideList[normalizeSlideNumber(slideNumber)].id;
+  }
 
-	function getContainingSlideId(el) {
-		var node = el;
-		while ('BODY' !== node.nodeName && 'HTML' !== node.nodeName) {
-			if (node.classList.contains('slide')) {
-				return node.id;
-			} else {
-				node = node.parentNode;
-			}
-		}
+  function goToSlide(slideNumber) {
+    url.hash = getSlideHash(slideNumber);
+    lognotes(slideNumber);
+    if (!isListMode()) {
+      updateProgress(slideNumber);
+    }
 
-		return '';
-	}
+  }
 
-	function dispatchSingleSlideMode(e) {
-		var slideId = getContainingSlideId(e.target);
+  function getContainingSlideId(el) {
+    var node = el;
+    while ('BODY' !== node.nodeName && 'HTML' !== node.nodeName) {
+      if (node.classList.contains('slide')) {
+        return node.id;
+      } else {
+        node = node.parentNode;
+      }
+    }
 
-		if ('' !== slideId && isListMode()) {
-			e.preventDefault();
+    return '';
+  }
 
-			// NOTE: we should update hash to get things work properly
-			url.hash = '#' + slideId;
-			history.replaceState(null, null, url.pathname + '?full#' + slideId);
-			enterSlideMode();
+  function dispatchSingleSlideMode(e) {
+    var slideId = getContainingSlideId(e.target);
 
-			updateProgress(getCurrentSlideNumber());
-		}
-	}
+    if ('' !== slideId && isListMode()) {
+      e.preventDefault();
 
-	// Increases inner navigation by adding 'active' class to next inactive inner navigation item
-	function increaseInnerNavigation(slideNumber) {
-		// Shortcut for slides without inner navigation
-		if (true !== slideList[slideNumber].hasInnerNavigation) { return -1; }
+      // NOTE: we should update hash to get things work properly
+      url.hash = '#' + slideId;
+      history.replaceState(null, null, url.pathname + '?full#' + slideId);
+      enterSlideMode();
 
-		var activeNodes = document.querySelectorAll(getSlideHash(slideNumber) + ' .active'),
-			// NOTE: we assume there is no other elements in inner navigation
-			node = activeNodes[activeNodes.length - 1].nextElementSibling;
+      updateProgress(getCurrentSlideNumber());
+    }
+  }
 
-		if (null !== node) {
-			node.classList.add('active');
-			return activeNodes.length + 1;
-		} else {
-			return -1;
-		}
-	}
+  // Increases inner navigation by adding 'active' class to next inactive inner navigation item
+  function increaseInnerNavigation(slideNumber) {
+    // Shortcut for slides without inner navigation
+    if (true !== slideList[slideNumber].hasInnerNavigation) { return -1; }
 
-	function lognotes(slideNumber) {
-		if (window.console && slideList[slideNumber]) {
-			var notes = document.querySelector('#' +slideList[slideNumber].id + ' .notes');
-			if (notes) {
-				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'))
-			}
-			if (slideList[slideNumber+1]) {
-				var next = document.querySelector('#' +slideList[slideNumber + 1].id + ' header');
-				if (next) {
-					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
-					console.info('NEXT: ' + next);
-				}
-			}
-		}
-	}
+    var activeNodes = document.querySelectorAll(getSlideHash(slideNumber) + ' .active'),
+      // NOTE: we assume there is no other elements in inner navigation
+      node = activeNodes[activeNodes.length - 1].nextElementSibling;
 
-	// Event handlers
+    if (null !== node) {
+      node.classList.add('active');
+      return activeNodes.length + 1;
+    } else {
+      return -1;
+    }
+  }
 
-	window.addEventListener('DOMContentLoaded', function () {
-		if (!isListMode()) {
-			// "?full" is present without slide hash, so we should display first slide
-			if (-1 === getCurrentSlideNumber()) {
-				history.replaceState(null, null, url.pathname + '?full' + getSlideHash(0));
-			}
+  function lognotes(slideNumber) {
+    if (window.console && slideList[slideNumber]) {
+      var notes = document.querySelector('#' +slideList[slideNumber].id + ' .notes');
+      if (notes) {
+        console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+      }
+      if (slideList[slideNumber+1]) {
+        var next = document.querySelector('#' +slideList[slideNumber + 1].id + ' header');
+        if (next) {
+          next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
+          console.info('NEXT: ' + next);
+        }
+      }
+    }
+  }
 
-			enterSlideMode();
-			updateProgress(getCurrentSlideNumber());
-		}
-	}, false);
+  // Event handlers
 
-	window.addEventListener('popstate', function (e) {
-		if (isListMode()) {
-			enterListMode();
-			scrollToSlide(getCurrentSlideNumber());
-		} else {
-			enterSlideMode();
-		}
-	}, false);
+  window.addEventListener('DOMContentLoaded', function () {
+    if (!isListMode()) {
+      // "?full" is present without slide hash, so we should display first slide
+      if (-1 === getCurrentSlideNumber()) {
+        history.replaceState(null, null, url.pathname + '?full' + getSlideHash(0));
+      }
 
-	window.addEventListener('resize', function (e) {
-		if (!isListMode()) {
-			applyTransform(getTransform());
-		}
-	}, false);
+      enterSlideMode();
+      updateProgress(getCurrentSlideNumber());
+    }
+  }, false);
 
-	document.addEventListener('keydown', function (e) {
-		// Shortcut for alt, shift and meta keys
-		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
+  window.addEventListener('popstate', function (e) {
+    if (isListMode()) {
+      enterListMode();
+      scrollToSlide(getCurrentSlideNumber());
+    } else {
+      enterSlideMode();
+    }
+  }, false);
 
-		var currentSlideNumber = getCurrentSlideNumber();
+  window.addEventListener('resize', function (e) {
+    if (!isListMode()) {
+      applyTransform(getTransform());
+    }
+  }, false);
 
-		switch (e.which) {
-			case 116: // F5
-			case 13: // Enter
-				if (isListMode() && -1 !== currentSlideNumber) {
-					e.preventDefault();
+  document.addEventListener('keydown', function (e) {
+    if (!keysalive) { return; }
+    // Shortcut for alt, shift and meta keys
+    if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
-					history.pushState(null, null, url.pathname + '?full' + getSlideHash(currentSlideNumber));
-					enterSlideMode();
+    var currentSlideNumber = getCurrentSlideNumber();
 
-					updateProgress(currentSlideNumber);
-				}
-			break;
+    switch (e.which) {
+      case 116: // F5
+      case 13: // Enter
+        if (isListMode() && -1 !== currentSlideNumber) {
+          e.preventDefault();
 
-			case 27: // Esc
-				if (!isListMode()) {
-					e.preventDefault();
+          history.pushState(null, null, url.pathname + '?full' + getSlideHash(currentSlideNumber));
+          enterSlideMode();
 
-					history.pushState(null, null, url.pathname + getSlideHash(currentSlideNumber));
-					enterListMode();
-					scrollToSlide(currentSlideNumber);
-				}
-			break;
+          updateProgress(currentSlideNumber);
+        }
+      break;
 
-			case 33: // PgUp
-			case 38: // Up
-			case 37: // Left
-			case 72: // h
-			case 75: // k
-				e.preventDefault();
+      case 27: // Esc
+        if (!isListMode()) {
+          e.preventDefault();
 
-				currentSlideNumber--;
-				goToSlide(currentSlideNumber);
-			break;
+          history.pushState(null, null, url.pathname + getSlideHash(currentSlideNumber));
+          enterListMode();
+          scrollToSlide(currentSlideNumber);
+        }
+      break;
 
-			case 34: // PgDown
-			case 40: // Down
-			case 39: // Right
-			case 76: // l
-			case 74: // j
-				e.preventDefault();
+      case 33: // PgUp
+      case 38: // Up
+      case 37: // Left
+      case 72: // h
+      case 75: // k
+        e.preventDefault();
 
-				// Only go to next slide if current slide have no inner
-				// navigation or inner navigation is fully shown
-				// NOTE: But first of all check if there is no current slide
-				if (
-					-1 === currentSlideNumber ||
-					!slideList[currentSlideNumber].hasInnerNavigation ||
-					-1 === increaseInnerNavigation(currentSlideNumber)
-				) {
-					currentSlideNumber++;
-					goToSlide(currentSlideNumber);
-				}
-			break;
+        currentSlideNumber--;
+        goToSlide(currentSlideNumber);
+      break;
 
-			case 36: // Home
-				e.preventDefault();
+      case 34: // PgDown
+      case 40: // Down
+      case 39: // Right
+      case 76: // l
+      case 74: // j
+        e.preventDefault();
 
-				currentSlideNumber = 0;
-				goToSlide(currentSlideNumber);
-			break;
+        // Only go to next slide if current slide have no inner
+        // navigation or inner navigation is fully shown
+        // NOTE: But first of all check if there is no current slide
+        if (
+          -1 === currentSlideNumber ||
+          !slideList[currentSlideNumber].hasInnerNavigation ||
+          -1 === increaseInnerNavigation(currentSlideNumber)
+        ) {
+          currentSlideNumber++;
+          goToSlide(currentSlideNumber);
+        }
+      break;
 
-			case 35: // End
-				e.preventDefault();
+      case 36: // Home
+        e.preventDefault();
 
-				currentSlideNumber = slideList.length - 1;
-				goToSlide(currentSlideNumber);
-			break;
+        currentSlideNumber = 0;
+        goToSlide(currentSlideNumber);
+      break;
 
-			case 9: // Tab = +1; Shift + Tab = -1
-			case 32: // Space = +1; Shift + Space = -1
-				e.preventDefault();
+      case 35: // End
+        e.preventDefault();
 
-				currentSlideNumber += e.shiftKey ? -1 : 1;
-				goToSlide(currentSlideNumber);
-			break;
+        currentSlideNumber = slideList.length - 1;
+        goToSlide(currentSlideNumber);
+      break;
 
-			default:
-				// Behave as usual
-		}
-	}, false);
+      case 9: // Tab = +1; Shift + Tab = -1
+      case 32: // Space = +1; Shift + Space = -1
+        e.preventDefault();
 
-	document.addEventListener('click', dispatchSingleSlideMode, false);
-	document.addEventListener('touchend', dispatchSingleSlideMode, false);
+        currentSlideNumber += e.shiftKey ? -1 : 1;
+        goToSlide(currentSlideNumber);
+      break;
 
-	document.addEventListener('touchstart', function (e) {
-		if (!isListMode()) {
-			var currentSlideNumber = getCurrentSlideNumber(),
-				x = e.touches[0].pageX;
-			if (x > window.innerWidth / 2) {
-				currentSlideNumber++;
-			} else {
-				currentSlideNumber--;
-			}
+      default:
+        // Behave as usual
+    }
+  }, false);
 
-			goToSlide(currentSlideNumber);
-		}
-	}, false);
+  document.addEventListener('click', dispatchSingleSlideMode, false);
+  document.addEventListener('touchend', dispatchSingleSlideMode, false);
 
-	document.addEventListener('touchmove', function (e) {
-		if (!isListMode()) {
-			e.preventDefault();
-		}
-	}, false);
+  document.addEventListener('touchstart', function (e) {
+    if (!isListMode()) {
+      var currentSlideNumber = getCurrentSlideNumber(),
+        x = e.touches[0].pageX;
+      if (x > window.innerWidth / 2) {
+        currentSlideNumber++;
+      } else {
+        currentSlideNumber--;
+      }
+
+      goToSlide(currentSlideNumber);
+    }
+  }, false);
+
+  document.addEventListener('touchmove', function (e) {
+    if (!isListMode()) {
+      e.preventDefault();
+    }
+  }, false);
 
 }());
