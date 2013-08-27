@@ -26,6 +26,17 @@ body:after {
 
 /* Slide
 ---------------------------------------- */
+.slide button.cb {
+	position: absolute;
+	top: 80px;
+	right: 0;
+}
+.full .slide button.cb {
+	display: none;
+}
+.inactive {
+	opacity: .5;
+}
 .slide:after {
 	counter-increment:paging;
 	content:counter(paging, decimal-leading-zero);

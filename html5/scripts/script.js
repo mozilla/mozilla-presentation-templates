@@ -10,6 +10,10 @@
   }
 
   for (i = 0; i < l; i++) {
+    var cb = document.createElement('button');
+    cb.className = 'cb';
+    cb.innerHTML = 'x';
+    slides[i].appendChild(cb);
     slideList.push({
       id: slides[i].id,
       hasInnerNavigation: null !== slides[i].querySelector('.inner')
@@ -71,9 +75,7 @@
 
   function scrollToSlide(slideNumber) {
     if (-1 === slideNumber ) { return; }
-
     var currentSlide = document.getElementById(slideList[slideNumber].id);
-
     if (null !== currentSlide) {
       window.scrollTo(0, currentSlide.offsetTop);
     }
@@ -103,18 +105,25 @@
   }
 
   function goToSlide(slideNumber) {
-    url.hash = getSlideHash(slideNumber);
-    lognotes(slideNumber);
-    if (!isListMode()) {
-      updateProgress(slideNumber);
-      GIFrefresh(slideNumber);
+    var currentSlide = document.getElementById(slideList[slideNumber].id);
+    if (currentSlide.classList.contains('inactive')) {
+      goToSlide(slides[slideNumber + 1] ? slideNumber + 1 : 0);
+    } else {
+      url.hash = getSlideHash(slideNumber);
+      lognotes(slideNumber);
+      if (!isListMode()) {
+        updateProgress(slideNumber);
+        GIFrefresh(slideNumber);
+      }
     }
   }
 
   function GIFrefresh(slideNumber) {
-    var img = slides[slideNumber].querySelector('img');
-    if (img && img.src.indexOf('gif') !== -1) {
-      img.src = img.src;
+    if (slides[slideNumber]) {
+      var img = slides[slideNumber].querySelector('img');
+      if (img && img.src.indexOf('gif') !== -1) {
+        img.src = img.src;
+      }
     }
   }
 
@@ -137,14 +146,25 @@
     if ('' !== slideId && isListMode()) {
       e.preventDefault();
 
-      // NOTE: we should update hash to get things work properly
-      url.hash = '#' + slideId;
-      history.replaceState(null, null, url.pathname + '?full#' + slideId);
-      enterSlideMode();
+      if(e.target.tagName === 'BUTTON' && e.target.className === 'cb') {
+        toggleSlide(e.target.parentNode);
+      } else {
+        // NOTE: we should update hash to get things work properly
+        url.hash = '#' + slideId;
+        history.replaceState(null, null, url.pathname + '?full#' + slideId);
+        enterSlideMode();
 
-      updateProgress(getCurrentSlideNumber());
+        updateProgress(getCurrentSlideNumber());
+      }
     }
+  }
 
+  function toggleSlide(elm) {
+    if (elm.classList.contains('inactive')) {
+      elm.classList.remove('inactive');
+    } else {
+      elm.classList.add('inactive');
+    }
   }
 
   // Increases inner navigation by adding 'active' class to next inactive inner navigation item
