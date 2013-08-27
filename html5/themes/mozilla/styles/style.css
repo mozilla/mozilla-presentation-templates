@@ -638,10 +638,15 @@ ul.inline li:last-child::after {
 	}
 
 /* Notes */		
-.full .notes {
+.full .slide .notes {
 	display:none;
 	}
-.list .notes {
+.full .peek .notes {
+	display: block;
+	z-index: 20;
+	font-size: 15px;
+}
+.full .notes, .list .notes {
 	background: #fff;
 	padding: 5px 10px;
 	z-index: 10;
@@ -657,6 +662,9 @@ ul.inline li:last-child::after {
 	transition: bottom .5s;
 }
 .list .slide:hover .notes {
+	bottom: 15px;
+}
+.full .notes {
 	bottom: 15px;
 }
 

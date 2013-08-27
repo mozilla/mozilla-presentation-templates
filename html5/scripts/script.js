@@ -144,6 +144,7 @@
 
       updateProgress(getCurrentSlideNumber());
     }
+
   }
 
   // Increases inner navigation by adding 'active' class to next inactive inner navigation item
@@ -214,7 +215,6 @@
     if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
     var currentSlideNumber = getCurrentSlideNumber();
-
     switch (e.which) {
       case 116: // F5
       case 13: // Enter
@@ -290,7 +290,9 @@
         currentSlideNumber += e.shiftKey ? -1 : 1;
         goToSlide(currentSlideNumber);
       break;
-
+      case 78:
+        slides[currentSlideNumber].classList.toggle('peek');
+      break;
       default:
         // Behave as usual
     }

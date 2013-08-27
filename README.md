@@ -9,6 +9,7 @@ Changes in this version:
 
 * Fullscreen button (as requested by Stormy Peters)
 * Overall cleanup of the CSS (different list styles, live CSS code)
+* Pressing "N" in fullscreen mode toggles note display
 
 Next steps: 
 
