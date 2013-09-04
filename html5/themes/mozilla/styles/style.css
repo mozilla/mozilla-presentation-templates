@@ -631,7 +631,7 @@ ul.oneline li {
 	display: inline; 
 	padding-right: 1em; 
 	}
-ul.oneline li::before, ul.inner li::before, ul.nobull li::before { 
+ul.oneline li::before, ul.nobull li::before { 
 	content: '';
 }
 ul.inline li { 
