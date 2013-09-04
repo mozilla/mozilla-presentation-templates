@@ -25,9 +25,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height:1;
 	}
-ol, ul {
+/* ol, ul {
 	list-style:none;
-	}
+	} Removed by Chris Mills */
 blockquote, q {
 	quotes:none;
 	}

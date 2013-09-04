@@ -221,7 +221,7 @@ blockquote .quotesource {
 		text-align:right;
 		}
 	.slide ul > li:before {
-		content:'\2022'; /* bull */
+		/* content:'\2022'; bullets - removed by Chris Mills  */
 		line-height:1.1;
 		font-size:40px;
 		}
