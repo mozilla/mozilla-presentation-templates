@@ -20,6 +20,21 @@
     });
   }
 
+  /* Encode code blocks */
+  function encode() {
+    var codes = document.querySelectorAll('code');
+    var all = codes.length;
+    while(all--) {
+      var tc = codes[all].innerHTML;
+      if (tc.indexOf('<')!== -1){
+      tc = tc.replace(/</g,'&lt');
+      tc = tc.replace(/>/g,'&gt');
+      codes[all].innerHTML = tc;
+      }
+    }
+  }
+  encode();
+  
   var demos = document.querySelectorAll('[contenteditable]'),
       alldemos = demos.length;
 
