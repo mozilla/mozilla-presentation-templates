@@ -129,6 +129,7 @@
       if (!isListMode()) {
         updateProgress(slideNumber);
         GIFrefresh(slideNumber);
+        playVideoIfAutoplay(slideNumber);
       }
     }
   }
@@ -138,6 +139,15 @@
       var img = slides[slideNumber].querySelector('img');
       if (img && img.src.indexOf('gif') !== -1) {
         img.src = img.src;
+      }
+    }
+  }
+  function playVideoIfAutoplay(slideNumber) {
+    if (slides[slideNumber] &&
+        slides[slideNumber].className.indexOf('autoplay')!== -1) {
+      var video = slides[slideNumber].querySelector('video');
+      if (video) {
+        video.play();
       }
     }
   }
