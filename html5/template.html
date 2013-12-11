@@ -1,0 +1,673 @@
+<!DOCTYPE HTML>
+<!-- <html lang="en-US"> -->
+<html lang="en-US" class="fade">
+<!-- 
+  ^ a class of "fade" makes slides fade smoothly into one another
+ -->
+<!-- <html lang="en-US" class="nonumbers"> -->
+<!-- 
+  If you want no numbers on the slides add a "nonumbers" class 
+  to the HTML element.
+  Adding a class of "fade" will make slides fade into another. 
+-->
+<head>
+  <meta charset="UTF-8">
+  <title>Your talk title here</title>
+<!-- 
+  If you upload your slides to the web, ensure that you have 
+  a good title - this shows up in search results and social
+  media links
+ -->
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+</head>
+<body class="list">
+  <header class="caption">
+    <h1>Your talk title here</h1>
+    <p class="footer">
+      {Your name}, 
+      {your <a href="http://twitter.com/">@twitter</a> or 
+      <a href="mailto:you@email.com">you@email.com</a>}
+    </p>
+  </header>
+  <aside class="talkdescription">
+    <p>This slide deck is using the shower system - roll over the previews to see the notes and click any slide to go into presentation mode. Then use keys to navigate. <button onclick="goFullScreen()">Go fullscreen</button></p>
+    <p class="abstract">
+      <strong>Abstract: </strong>
+       Add your talk abstract here
+    </p>
+  </aside>
+
+<!-- 
+    Simply copy the whole block for each slide you want.
+  Special slides get extra classes. Each slide needs an ID 
+  to allow for bookmarking and target jumping.
+-->
+
+  <div id="cover" class="slide"><div>
+    <section>
+      <header>
+        <h2>The cover slide</h2>
+      </header>
+      <img src="pictures/templatedemos/high-five.jpg" 
+           class="middle shadow" height="400"
+           alt="High-five at the Mozilla Festival!">
+      <small class="byline">
+        {Firstname}, {Lastname}, {Conference}, {Location}, {date}
+      </small>
+      <footer class="notes">
+        This is a simple cover slide with an image in the middle
+      </footer>
+    </section>
+  </div></div>
+
+<!-- end slide block -->
+
+  <div id="callout" class="slide"><div>
+    <section>
+      <header>
+        <h2>Callout slide styles</h2>
+      </header>
+      <p>The following are callout slide styles – either a large word, or a one sentence headline. Use them to chunk your presentation into logical units.</p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+  <div id="shout" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>Shout slide</h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+  <div id="oneline" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2><strong>Imagine</strong>: One line slide</h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+  <div id="imagesinfo" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide styles</h2>
+      </header>
+      <ul>
+        <li>Images are either backgrounds or part of the page.</li>
+        <li>Background images need a "cover" class on on the slide DIV.</li>
+        <li>In-page images need a class of "middle" to get centered</li>
+        <li>Adding "left" or "right" classes floats the image and you can use text next to them</li>
+        <li>Adding a "shadow" class adds a drop-shadow.</li>
+        <li>FIGURE elements around the image allow for a "swinging frame" effect</li>
+        <li>Images can also be videos or SVG. :)</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imageh" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Image slide (stretched horizontal)</h2>
+      </header>
+      <img src="pictures/templatedemos/phones.jpg" 
+           class="middle" 
+           alt="Firefox OS phones">
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imagev" class="slide cover h"><div>
+    <section>
+      <header>
+        <h2>Image slide (stretched vertical)</h2>
+      </header>
+      <img src="pictures/templatedemos/phones.jpg" 
+           class="middle" 
+           alt="Firefox OS phones">
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+        Introduce yourself, who you are and why you are the person to give that talk
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imagemiddle" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (centered, resized)</h2>
+      </header>
+      <img src="pictures/templatedemos/smallphones.jpg" 
+           class="middle"
+           alt="Firefox OS phones">
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+        Introduce yourself, who you are and why you are the person to give that talk
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imageright" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (right)</h2>
+      </header>
+      <img src="pictures/templatedemos/smallphones.jpg" 
+           class="right" 
+           alt="Firefox OS phones">
+
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>     
+
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+        Introduce yourself, who you are and why you are the person to give that talk
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imageleft" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (left)</h2>
+      </header>
+      <img src="pictures/templatedemos/smallphones.jpg" 
+           class="left" 
+           alt="Firefox OS phones">
+
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>     
+
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imageshadow" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (centered, shadow)</h2>
+      </header>
+      <img src="pictures/templatedemos/smallphones.jpg" 
+           class="middle shadow"
+           alt="Firefox OS phones">
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imageframe" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (framed)</h2>
+      </header>
+      <figure class="middle shadow frame">
+      <img src="pictures/templatedemos/smallphones.jpg" 
+           alt="Firefox OS phones">
+      </figure>     
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imageswing" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (framed, swinging)</h2>
+      </header>
+      <figure class="middle shadow frame swing">
+      <img src="pictures/templatedemos/smallphones.jpg" 
+           alt="Firefox OS phones">
+      </figure>     
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="imagegif" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (GIF)</h2>
+      </header>
+      <img src="pictures/templatedemos/earthphases.gif" 
+           alt="Earthphases" class="right" width="300">
+      <p>GIFs animate from the start when the slide shows.</p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="videoswing" class="slide"><div>
+    <section>
+      <header>
+        <h2>Image slide (video)</h2>
+      </header>
+      <video controls class="middle shadow">
+        <source src="pictures/templatedemos/wave.mp4" type="video/mp4"></source>
+        <source src="pictures/templatedemos/wave.webm" type="video/webm"></source>
+      </video>
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="videoautoplay" class="slide autoplay"><div>
+    <section>
+      <header>
+        <h2>Image slide (video autoplay)</h2>
+      </header>
+      <video controls class="middle shadow">
+        <source src="pictures/templatedemos/wave.mp4" type="video/mp4"></source>
+        <source src="pictures/templatedemos/wave.webm" type="video/webm"></source>
+      </video>
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/codepo8/9506545800/">
+          Image by Chris Heilmann
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+
+  <div id="listtypes" class="slide"><div>
+    <section>
+      <header>
+        <h2>List style types</h2>
+      </header>
+      <p>The following are the different kinds of list styles available to you. <strong>Always remember that bullets kill</strong> – both people and audiences. If people can read ahead of your narrative, they will. And you made yourself redundant as a speaker.</p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="numbered" class="slide"><div>
+    <section>
+      <header>
+        <h2>Numbered list</h2>
+      </header>
+      <ol>
+        <li>Collect underpants</li>
+        <li>???</li>
+        <li>Profit</li>
+      </ol>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+ <div id="list" class="slide"><div>
+    <section>
+      <header>
+        <h2>Unordered List</h2>
+      </header>
+      <ul>
+        <li>Tigers</li>
+        <li>Elephants</li>
+        <li>Bears
+          <ul>
+            <li>Koalas</li>
+            <li>Polar</li>
+            <li>Panda</li>
+          </ul>
+        </li>
+        <li>Oh my&hellip;</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+ <div id="orderedlist" class="slide"><div>
+    <section>
+      <header>
+        <h2>Ordered List</h2>
+      </header>
+      <ol>
+        <li>Tigers</li>
+        <li>Elephants</li>
+        <li>Bears
+          <ol>
+            <li>Koalas</li>
+            <li>Polar</li>
+            <li>Panda</li>
+          </ol>
+        </li>
+        <li>Oh my&hellip;</li>
+      </ol>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+ <div id="longlist" class="slide"><div>
+    <section>
+      <header>
+        <h2>Long List</h2>
+      </header>
+      <ol class="longlist">
+        <li>Tigers</li>
+        <li>Elephants</li>
+        <li>Bears
+          <ol>
+            <li>Koalas</li>
+            <li>Polar</li>
+            <li>Panda</li>
+          </ol>
+        </li>
+        <li>Hedgehogs</li>
+        <li>Opossums</li>
+        <li>Hyrax</li>
+        <li>Capybara</li>
+        <li>Oh my&hellip;</li>
+      </ol>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+ <div id="inlinelist" class="slide"><div>
+    <section>
+      <header>
+        <h2>Inline List</h2>
+      </header>
+      <ul class="inline">
+        <li>Tigers</li>
+        <li>Elephants</li>
+        <li>Bears</li>
+        <li>Hedgehogs</li>
+        <li>Opossums</li>
+        <li>Hyrax</li>
+        <li>Capybara</li>
+        <li>Oh my&hellip;</li>
+      </ul>
+      <footer class="notes">moo
+      </footer>
+    </section>
+ </div></div>
+
+ <div id="animatedlist" class="slide"><div>
+    <section>
+      <header>
+        <h2>Animated List</h2>
+      </header>
+      <ul class="inner">
+        <li class="active">Tigers</li>
+        <li>Elephants</li>
+        <li>Bears</li>
+        <li>Hedgehogs</li>
+        <li>Opossums</li>
+        <li>Hyrax</li>
+        <li>Capybara</li>
+        <li>Oh my&hellip;</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+ </div></div>
+
+  <div id="onelinelist" class="slide"><div>
+    <section>
+      <header>
+        <h2>One line list</h2>
+      </header>
+      <ul class="oneline">
+        <li>Elephants</li>
+        <li>Aardvarks</li>
+        <li>Hedgehogs</li>
+        <li>Kittens</li>
+        <li>Puppies</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="reallylonglist" class="slide"><div>
+    <section>
+      <header>
+        <h2>Long list</h2>
+      </header>
+      <ul class="lots">
+        <li>Elephants</li>
+        <li>Aardvarks</li>
+        <li>Hedgehogs</li>
+        <li>Kittens</li>
+        <li>Puppies</li>
+        <li>Axolotls</li>
+        <li>Elephants</li>
+        <li>Aardvarks</li>
+        <li>Hedgehogs</li>
+        <li>Kittens</li>
+        <li>Puppies</li>
+        <li>Axolotls</li>
+        <li>Elephants</li>
+        <li>Aardvarks</li>
+        <li>Hedgehogs</li>
+        <li>Kittens</li>
+        <li>Puppies</li>
+        <li>Axolotls</li>
+        <li>Elephants</li>
+        <li>Aardvarks</li>
+        <li>Hedgehogs</li>
+        <li>Kittens</li>
+        <li>Puppies</li>
+        <li>Axolotls</li>
+        <li>Elephants</li>
+        <li>Aardvarks</li>
+        <li>Hedgehogs</li>
+        <li>Kittens</li>
+        <li>Puppies</li>
+        <li>Axolotls</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="codestyles" class="slide"><div>
+    <section>
+      <header>
+        <h2>Code styles</h2>
+      </header>
+      <p>Code is not automatically encoded and colour coded. The space you have for code is also limited. This is by design: <strong>presentations are not there to drench audiences with code</strong>. Switch to your editor if needed and link to live, maintained code so people don't copy+paste.</p>
+      <footer class="notes">
+      </footer> 
+    </section>
+  </div></div>
+
+   <div id="codedemo" class="slide"><div>
+    <section>
+      <header>
+        <h2>code</h2>
+      </header>
+        <pre>
+        <code>var installapp = navigator.mozApps.install(manifestURL);</code>
+        <code>installapp.<mark>onsuccess</mark> = function(data) {</code>
+        <code>  // App is installed</code>
+        <code>};</code>
+        <code>installapp.<mark class="important">onerror</mark> = function() {</code>
+        <code> // App wasn't installed, info is in </code>
+        <code> // installapp.error.name</code>
+        <code>};</code>
+        </pre>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="markupdemo" class="slide"><div>
+    <section>
+      <header>
+        <h2>Markup is encoded</h2>
+      </header>
+        <pre>
+        <code><p>Paragraph without encode</p></code>
+        <code>&lt;p&gt;Paragraph without encode&lt;/p&gt;</code>
+        <code><!-- for backwards compatibility --></code>
+        </pre>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="livecode" class="slide"><div>
+    <section>
+      <header>
+        <h2>Live CSS code</h2>
+      </header>
+      <div id="demodiv"></div>
+<style contenteditable>#demodiv {
+  width: 200px;
+  height: 200px;
+  background: green;
+}</style>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="smoothlivecode" class="slide"><div>
+    <section>
+      <header>
+        <h2>Live CSS code (smooth)</h2>
+      </header>
+      <div id="demodiv2" class="smoothdemo"></div>
+<style contenteditable>#demodiv2 {
+  width: 200px;
+  height: 200px;
+  background: green;
+}</style>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="quotes" class="slide"><div>
+    <section>
+      <header>
+        <h2>Quote styles</h2>
+      </header>
+      <p>Quotes are a superb way to look clever and get more kudos for being in the know. Make sure you attribute them correctly and do not quote out of context.</p>
+      <footer class="notes">
+      </footer> 
+    </section>
+  </div></div>
+
+  <div id="simplequote" class="slide"><div>
+    <section>
+      <header>
+        <h2>Quote</h2>
+      </header>
+      <blockquote>
+        <p>The worst part of internet quotes is that you can never be sure that they are attributed correctly.</p>
+        <p class="byline">Benjamin Franklin</p>
+      </blockquote>
+      <footer class="notes">
+      </footer> 
+    </section>
+  </div></div>
+
+  <div id="longquote" class="slide"><div>
+    <section>
+      <header>
+        <h2>Long quote is long&hellip;</h2>
+      </header>
+      <blockquote class="lots">
+        But there's no doubt that, we went for this approach, <mark>we built this internal framework that we called Faceweb</mark>, which is basically this idea that we can take the infrastructure that we built out for pushing code everyday, not having to submit to an app store, building web code on the web stack that we have, and that we can translate that into mobile development. <mark>We just were never able to get the quality of it we wanted</mark>&hellip;
+      </blockquote>
+    <footer class="notes">
+      It seems the main failure was Facebook's approach and internal system creating HTML5 apps - not the technology itself.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="thanks" class="slide"><div>
+    <section>
+      <header>
+        <h2>Thanks</h2>
+      </header>
+      <img src="pictures/mozillaoverview/redpanda.jpg" class="right" alt="Red panda (Firefox)">
+      <ul class="nobull">
+        <li>{name}</li>
+        <li>{title}</li>
+        <li>{<a href="http://twitter.com/">@twitter</a>}</li>
+        <li><strong>Slides</strong>: {slideurl}</li>
+      </ul>
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/yortw/5798336827/">Photo by Yortw</a>
+      </small>
+
+    <footer class="notes">
+    </footer>
+
+    </section>
+  </div></div>
+
+  <!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+  <div class="progress"><div></div></div>
+  <script src="scripts/script.js"></script>
+  <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+</html>
