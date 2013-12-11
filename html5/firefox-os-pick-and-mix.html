@@ -43,6 +43,9 @@
         transform: rotate(90deg) translate(52%,-160px);
       }
     }
+    .demourl {
+      bottom: 10px;
+    }
   </style>
 </head>
 <body class="list">
@@ -620,20 +623,6 @@ WEB ACTIVITIES
     </section>
   </div></div>
 
-  <div id="android" class="slide"><div>
-    <section>
-      <header>
-        <h2>Activities/Hosted Apps on Android</h2>
-      </header>
-      <figure class="middle shadow swing frame">
-        <img src="pictures/fxos/foxkeh-android.png" 
-             alt="Foxkeh loves android">
-      </figure>
-      <footer class="notes">
-        The great news is that if you have Firefox on Android, this functionality is also available outside of Firefox OS for you - any Android device will do.
-      </footer>
-    </section>
-  </div></div>
 
 <!-- ===================================================================
 DYNAMIC APP SEARCH
@@ -787,14 +776,312 @@ TOOLS
     </section>
   </div></div>
 
+
+  <div id="devtoolsbullets" class="slide"><div>
+    <section>
+      <header>
+        <h2>Firefox Developer tools</h2>
+      </header>
+      <ul>
+        <li>Developer tools are built into Firefox - there is no need to install Firebug</li>
+        <li>The developer tools are designed as a toolbox of different features for specialist use cases - not a kitchen sink approach of adding all features into one, crammed interface</li>
+        <li>This allows our developer tools to evolve without becoming overwhelming - not every developer needs the same features!</li>
+      </ul>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="basicdevtoolsfeatures" class="slide"><div>
+    <section>
+      <header>
+        <h2>Basic developer tools features</h2>
+      </header>
+      <img src="pictures/fxos/devtools.png" 
+           alt="Developer tools"  width="100%" 
+           class="middle shadow">
+    <footer class="notes">
+There's basic features you'd expect from any developer toolset in a browser:
+
+* Console: shows messages around net activity, error messaging and warnings
+* Inspector: View source of HTML with live editing and rendering view of the box model with information on the size of elements
+* Debugger: Shows the scripts used in the page and allows to set breakpoints for debugging
+* Style Editor: allows to see and edit the applied style sheets save the changes
+* Network: shows you all the resources loaded in the document and how long it took to load them
+    </footer>
+    </section>
+  </div></div>  
+
+  <div id="basics-console" class="slide"><div>
+    <section>
+      <header>
+        <h2>Console</h2>
+      </header>
+      <img src="pictures/fxos/console.png" 
+           alt="Developer tools console" width="100%" 
+           class="middle shadow">
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console">Web Console Docs</a> - <a href="https://www.youtube.com/watch?v=C6Cyrpkb25k">Web Console tutorial on YouTube</a></p>     
+    <footer class="notes">
+      The console shows messages around net activity, error messaging and warnings. You can also write any JavaScript here to get information about what is going on in the current page. Opening this is the first step to find bugs. The command line in the console also features autocomplete of objects, properties and method names.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="basics-inspector" class="slide"><div>
+    <section>
+      <header>
+        <h2>Inspector</h2>
+      </header>
+      <img src="pictures/fxos/inspector.png" 
+           alt="Developer tools inspector" width="100%" 
+           class="middle shadow">
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector">Page inspector Docs</a></p>     
+    <footer class="notes">
+      The Inspector allows you to view the HTML source and edit it live. You also get information about the size of elements, which fonts are used and the position, padding and margin of elements.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="basics-debugger" class="slide"><div>
+    <section>
+      <header>
+        <h2>Debugger</h2>
+      </header>
+      <img src="pictures/fxos/debugger.png" 
+           alt="Developer tools debugger" width="100%" 
+           class="middle shadow">
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger">Debugger Docs</a>  - <a href="https://www.youtube.com/watch?v=sK8KU8oiF8s">Debugger tutorial on YouTube</a></p>     
+    <footer class="notes">
+      The debugger shows the scripts used in the page and allows to set breakpoints for debugging.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="debuggerscreencast" class="slide"><div>
+    <section>
+      <header>
+        <h2>Debugger in action (Jason fill this!)</h2>
+      </header>
+       <video class="middle" height="450" controls>
+        <source src="pictures/fxos/debugger.mp4"  type="video/mp4"></source>
+        <source src="pictures/fxos/debugger.webm"  type="video/webm"></source>
+      </video>     
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="basics-style" class="slide"><div>
+    <section>
+      <header>
+        <h2>Style Editor</h2>
+      </header>
+      <img src="pictures/fxos/styleeditor.png" 
+           alt="Developer tools styleeditor" width="100%" 
+           class="middle shadow">
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Style_Editor">Style Editor Docs</a>  - <a href="https://www.youtube.com/watch?v=7839qc55r7o">Style editor tutorial on YouTube</a></p>     
+    <footer class="notes">
+      The style editor allows to see and edit the applied style sheets save the changes.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="basics-network" class="slide"><div>
+    <section>
+      <header>
+        <h2>Network</h2>
+      </header>
+      <img src="pictures/fxos/network.png" 
+           alt="Developer tools network" width="100%" 
+           class="middle shadow">
+       <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor">Network Monitor Docs</a></p>    
+    <footer class="notes">
+      The network tab shows you all the resources loaded in the document and how long it took to load them.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="basics-network-details" class="slide"><div>
+    <section>
+      <header>
+        <h2>Network request details</h2>
+      </header>
+      <img src="pictures/fxos/network-details.png" 
+           alt="Developer tools network details" width="100%" 
+           class="middle shadow">
+    <footer class="notes">
+      Each request can be analysed, you can see the headers, cookies and other request details. You can also copy the URL or edit and resend it. This is great to debug API requests.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="advanceddevelopertoolsfeatures" class="slide"><div>
+    <section>
+      <header>
+        <h2>Advanced developer tools features</h2>
+      </header>
+      <img src="pictures/fxos/devtools.png" 
+           alt="Developer tools"  width="100%" 
+           class="middle shadow">
+    <footer class="notes">
+And there are more advanced features available:
+
+* Profiler: allows you to interact with the page and see where your bottlenecks are
+* Repaint Highlighter: shows when the browser repaints a certain screen area which is very useful to debug slow interfaces. Repaints are expensive in terms of performance.
+* Scratchpad: allows you to write larger JavaScript code than a line to run against the current page and execute step by step
+* Responsive view: allows you to resize a page to a certain size whilst keeping the developer tools in a usable size. 
+* 3D View: shows you a 3D rendering of the depth of the DOM of a page
+    </footer>
+    </section>
+  </div></div>  
+
+  <div id="profiler" class="slide"><div>
+    <section>
+      <header>
+        <h2>Profiler</h2>
+      </header>
+      <img src="pictures/fxos/profiler.png" 
+           alt="Developer tools profiler"  width="100%" 
+           class="middle shadow">
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Profiler">Profiler Docs</a></p>     
+    <footer class="notes">
+The profiler allows you to interact with the page and see where your bottlenecks are by backtracing what happened in the browser.
+    </footer>
+    </section>
+  </div></div> 
+
+  <div id="profilerscreencast" class="slide"><div>
+    <section>
+      <header>
+        <h2>Profiler in action (Jason fill this!)</h2>
+      </header>
+       <video class="middle" height="450" controls>
+        <source src="pictures/fxos/profiler.mp4"  type="video/mp4"></source>
+        <source src="pictures/fxos/profiler.webm"  type="video/webm"></source>
+      </video>     
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="reflow" class="slide"><div>
+    <section>
+      <header>
+        <h2>Highlight repainted area</h2>
+      </header>
+       <video class="middle" height="450" controls>
+        <source src="pictures/fxos/reflow.mp4"  type="video/mp4"></source>
+        <source src="pictures/fxos/reflow.webm"  type="video/webm"></source>
+      </video>     
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Paint_Flashing_Tool">Repaint Highlighter Docs</a></p>
+    <footer class="notes">
+Repaint Highlighter: shows when the browser repaints a certain screen area which is very useful to debug slow interfaces. Repaints are expensive in terms of performance.
+    </footer>
+    </section>
+  </div></div> 
+
+  <div id="scratchpad" class="slide"><div>
+    <section>
+      <header>
+        <h2>Scratchpad</h2>
+      </header>
+      <img src="pictures/fxos/scratchpad.png" 
+           alt="Developer tools scratchpad"  height="450" 
+           class="middle shadow">
+       <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Scratchpad">Scratchpad Documentation</a> - <a href="https://www.youtube.com/watch?v=Pt7DZACyClM">Scratchpad lecture on YouTube</a></p>    
+    <footer class="notes">
+      Scratchpad allows you to write larger JavaScript code than a line to run against the current page and execute step by step
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="scratchpadscreencast" class="slide"><div>
+    <section>
+      <header>
+        <h2>Scratchpad in action (Jason fill this!)</h2>
+      </header>
+       <video class="middle" height="450" controls>
+        <source src="pictures/fxos/scratchpad.mp4"  type="video/mp4"></source>
+        <source src="pictures/fxos/scratchpad.webm"  type="video/webm"></source>
+      </video>     
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="responsiveview" class="slide autoplay"><div>
+    <section>
+      <header>
+        <h2>Responsive view</h2>
+      </header>
+       <video class="middle" height="450" controls>
+        <source src="pictures/fxos/responsive.mp4"  type="video/mp4"></source>
+        <source src="pictures/fxos/responsive.webm"  type="video/webm"></source>
+      </video>
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_View">Responsive View Docs </a></p>     
+    <footer class="notes">
+      Responsive view: allows you to resize a page to a certain size whilst keeping the developer tools in a usable size. You can also simulate touch events and take screenshots of the correct sized window.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="threedview" class="slide"><div>
+    <section>
+      <header>
+        <h2>3D DOM view</h2>
+      </header>
+       <video class="middle" height="450" controls>
+        <source src="pictures/fxos/3dview.mp4"  type="video/mp4"></source>
+        <source src="pictures/fxos/3dview.webm"  type="video/webm"></source>
+      </video>     
+    <footer class="notes">
+      3D View: shows you a 3D rendering of the depth of the DOM of a page
+    </footer>
+    </section>
+  </div></div> 
+
+
+  <div id="mobiletools" class="slide"><div>
+    <section>
+      <header>
+        <h2>Mobile/App specific developer tools</h2>
+      </header>
+      <img src="pictures/fxos/mobiletools.png" 
+           alt="Mobile tools"  height="450" 
+           class="middle shadow">
+    <footer class="notes">
+Firefox OS/HTML5 App/Mobile specific features:
+
+* Connect to remote device: this allows you to connect a remote device to the developer tools and get information from a session on a mobile into the developer tools
+* Firefox OS Simulator: Allows you to simulate a Firefox OS device on your Desktop
+* App Manager: Allows for ease of management of apps on your machine and on a mobile device. Even allows debugging of the OS interface itself and of running apps.
+    </footer>
+    </section>
+  </div></div> 
+
+  <div id="remotedebug" class="slide"><div>
+    <section>
+      <header>
+        <h2>Remote debugging of mobile devices</h2>
+      </header>
+      <img src="pictures/fxos/remote-debugging-overview.png" 
+           alt="Mobile tools" height="450"  
+           class="middle">
+       <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Tools/Remote_Debugging">Remote debugging in Firefox</a></p>    
+    <footer class="notes">
+      Connect to remote device: this allows you to connect a remote device to the developer tools and get information from a session on a mobile into the developer tools. Available tools are Page Inspector, JavaScript Debugger, Style Editor, Web Console, Profiler and Network Monitor.
+    </footer>
+    </section>
+  </div></div> 
+
   <div id="fxossimulator" class="slide h"><div>
     <section>
       <header>
         <h2>Firefox OS Simulator</h2>
       </header>
-      <img src="pictures/fxos/simulator.png" 
+      <img src="pictures/fxos/simulator40.png" 
            alt="Simulator" 
-           class="middle shadow" height="400">
+           class="middle shadow" height="450">
       <p class="demourl">
         <a href="https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/">
           Firefox OS Simulator
@@ -802,6 +1089,26 @@ TOOLS
       </p>
     <footer class="notes">
       The Firefox OS Simulator is an add-on for Firefox which simulates a phone on your computer. You can test the install process and buying and selling applications and you can send apps directly to a connected phone. You can also debug your applications directly from your computer including live CSS changes. 
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="appmanager" class="slide cover"><div>
+    <section>
+      <header>
+        <h2>App Manager</h2>
+      </header>
+      <video controls>
+        <source src="pictures/fxos/appmanager.mp4" type="video/mp4">
+        <source src="pictures/fxos/appmanager.webm" type="video/webm">
+      </video>
+      <p class="demourl">
+        <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">
+          Using the App Manager
+        </a>
+      </p>
+    <footer class="notes">
+      App Manager: Allows for ease of management of apps on your machine and on a mobile device. Even allows debugging of the OS interface itself and of running apps.
     </footer>
     </section>
   </div></div>
@@ -898,24 +1205,7 @@ TOOLS
     </section>
   </div></div>
 
-  <div id="flathead" class="slide h"><div>
-    <section>
-      <header>
-        <h2>Coming soon: Mozilla Flathead</h2>
-      </header>
-      <img src="pictures/fxos/flathead.png" 
-           alt="Mozilla Flathead" 
-           class="middle shadow" height="400">
-      <p class="demourl">
-        <a href="http://flathead.herokuapp.com/designer">
-          Flathead demo URL
-        </a>
-      </p>
-    <footer class="notes">
-      Flathead is a WYSIWYG editor for apps which allows you to drag and drop web components, connect them in a visual way and then package and deploy your app with a single click. It is part of the Mozilla Webmaker project and currently in production.
-    </footer>
-    </section>
-  </div></div>
+
 
   <div id="native" class="slide"><div>
     <section>
