@@ -13,6 +13,6 @@ Changes in this version:
 * Pressing "N" in fullscreen mode toggles note display
 * In list mode, each slide has a "x" button to turn it on and off. This does not persist though, so when you reload your slides, it will make them all active again (TODO I guess)
 
-Next steps: 
+Next steps:dotfiles.org/swipty.org 
 
 * Persist Toggle slides feature
