@@ -9,7 +9,7 @@
 @import url(reset.css);
 
 BODY {
-	font:25px/1.8 'OpenSansRegular', sans-serif;
+	font:25px/1.8 'Open Sans', sans-serif;
 	counter-reset:paging;
 	}
 
@@ -132,7 +132,7 @@ body:after {
 	margin:0 0 58px;
 	color:rgb(62,62,62);
 	text-transform: uppercase;
-	font:lighter 40px/1.13 'OpenSansLight', sans-serif;
+	font:lighter 40px/1.13 'Open Sans', sans-serif;
 	}
 
 /* Elements */
@@ -403,7 +403,7 @@ blockquote .quotesource {
 	text-shadow:0 1px 1px #000;
 	}
 	.list .caption h1 {
-		font:bold 50px/1 'OpenSansRegular', sans-serif;
+		font:bold 50px/1 'Open Sans', sans-serif;
 		}
 	.list .caption a {
 		color:#fff;
