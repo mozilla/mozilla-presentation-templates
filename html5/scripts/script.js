@@ -385,3 +385,29 @@ function goFullScreen() {
     requestFullscreen( document.documentElement );
   }
 }
+
+var lang = 'en-US';
+try {
+  lang = new URL(window.location).searchParams.get('lang');
+} catch (ex) {
+ // searchParams isn't supported in all browsers
+}
+
+// Pre-selects the correct current language on the dropdown menu
+document.getElementById('langMenuId').value = lang;
+
+function changeLanguage(){
+  var langObj = document.getElementById('langMenuId');
+  document.documentElement.lang = langObj.value;
+
+  // Update the language code in the URL bar
+  try {
+    var url = new URL(window.location);
+    url.searchParams.set('lang', langObj.value);
+    history.replaceState({}, document.title, url);
+  } catch (ex) {
+    // This might not be supported in all browsers
+  }
+}
+
+changeLanguage();
