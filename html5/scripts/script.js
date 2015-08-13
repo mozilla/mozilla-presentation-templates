@@ -97,7 +97,7 @@
   }
 
   function isListMode() {
-    return 'full' !== url.search.substr(1);
+    return 'full' !== url.search.substr(1, 4);
   }
 
   function normalizeSlideNumber(slideNumber) {
