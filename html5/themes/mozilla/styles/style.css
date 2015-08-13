@@ -749,3 +749,28 @@ ul.inline li:last-child::after {
   50%  { transform: rotate(3deg) translate(-50%, -50%); }
   100% { transform: rotate(-3deg) translate(-50%, -50%); }
 }
+
+/* Multilingual support */
+
+.en-US,
+.zh-CN,
+.zh-TW,
+.ja-JP {
+	display: none;
+}
+
+:lang(en-US) .en-US,
+:lang(zh-CN) .zh-CN,
+:lang(zh-TW) .zh-TW,
+:lang(ja-JP) .ja-JP {
+	display: block;
+}
+
+
+#langMenuDivId {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+	bottom: 36px;
+}
