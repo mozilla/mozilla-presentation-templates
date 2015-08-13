@@ -752,17 +752,17 @@ ul.inline li:last-child::after {
 
 /* Multilingual support */
 
-.en_us,
-.zh_cn,
-.zh_tw,
-.ja_jp {
+.en-US,
+.zh-CN,
+.zh-TW,
+.ja-JP {
 	display: none;
 }
 
-:lang(en-US) .en_us,
-:lang(zh-CN) .zh_cn,
-:lang(zh-TW) .zh_tw,
-:lang(ja-JP) .ja_jp {
+:lang(en-US) .en-US,
+:lang(zh-CN) .zh-CN,
+:lang(zh-TW) .zh-TW,
+:lang(ja-JP) .ja-JP {
 	display: block;
 }
 
