@@ -69,6 +69,11 @@
         <h2>Callout slide styles</h2>
       </header>
       <p>The following are callout slide styles – either a large word, or a one sentence headline. Use them to chunk your presentation into logical units.</p>
+      <p>Multilingual content:</p>
+      <div class="en-US">This is English.</div>
+      <div class="zh-CN">这是中文（简体）。</div>
+      <div class="zh-TW">這是中文（繁體）。</div>
+      <div class="ja-JP">これは日本語です。</div>
       <footer class="notes">
       </footer>
     </section>
@@ -77,7 +82,12 @@
   <div id="shout" class="slide shout"><div>
     <section>
       <header>
-        <h2>Shout slide</h2>
+        <h2>
+          <div class="en-US">Shout slide</div>
+          <div class="zh-CN">标题</div>
+          <div class="zh-TW">標題</div>
+          <div class="ja-JP">タイトル</div>
+        </h2>
       </header>
       <footer class="notes">
       </footer>
@@ -667,6 +677,15 @@
     just remove “progress” element.
     -->
   <div class="progress"><div></div></div>
+  <div id="langMenuDivId">
+    <!-- Having event.stopPropagation() prevents keypresses on the language menu from affecting slideshow progression -->
+    <select id="langMenuId" onchange="changeLanguage();" onkeydown="event.stopPropagation()">
+      <option value="en-US">English</option>
+      <option value="zh-CN">中文（简体）</option>
+      <option value="zh-TW">中文（繁體）</option>
+      <option value="ja-JP">日本語</option>
+    </select>
+  </div>
   <script src="scripts/script.js"></script>
   <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
 </body>
