@@ -1,10 +1,11 @@
-(function () {
+(function() {
   var url = window.location,
     body = document.body,
     slides = document.querySelectorAll('div.slide'),
     progress = document.querySelector('div.progress div'),
     slideList = [],
-    l = slides.length, i;
+    l = slides.length,
+    i;
   if (typeof keysalive === 'undefined') {
     keysalive = true;
   }
@@ -24,23 +25,24 @@
   function encode() {
     var codes = document.querySelectorAll('code');
     var all = codes.length;
-    while(all--) {
+    while (all--) {
       var tc = codes[all].innerHTML;
-      if (tc.indexOf('<')!== -1){
-      tc = tc.replace(/</g,'&lt');
-      tc = tc.replace(/>/g,'&gt');
-      codes[all].innerHTML = tc;
+      if (tc.indexOf('<') !== -1) {
+        tc = tc.replace(/</g, '&lt');
+        tc = tc.replace(/>/g, '&gt');
+        codes[all].innerHTML = tc;
       }
     }
   }
   encode();
-  
+
   var demos = document.querySelectorAll('[contenteditable]'),
-      alldemos = demos.length;
+    alldemos = demos.length;
 
   function dokeys(ev) {
     keysalive = true;
   }
+
   function stopkeys(ev) {
     keysalive = false;
   }
@@ -48,6 +50,7 @@
     demos[alldemos].addEventListener('focus', stopkeys, false);
     demos[alldemos].addEventListener('blur', dokeys, false);
   }
+
   function getTransform() {
     var denominator = Math.max(
       body.clientWidth / window.innerWidth,
@@ -89,7 +92,9 @@
   }
 
   function scrollToSlide(slideNumber) {
-    if (-1 === slideNumber ) { return; }
+    if (-1 === slideNumber) {
+      return;
+    }
     var currentSlide = document.getElementById(slideList[slideNumber].id);
     if (null !== currentSlide) {
       window.scrollTo(0, currentSlide.offsetTop);
@@ -111,7 +116,9 @@
   }
 
   function updateProgress(slideNumber) {
-    if (null === progress) { return; }
+    if (null === progress) {
+      return;
+    }
     progress.style.width = (100 / (slideList.length - 1) * normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
   }
 
@@ -142,9 +149,10 @@
       }
     }
   }
+
   function playVideoIfAutoplay(slideNumber) {
     if (slides[slideNumber] &&
-        slides[slideNumber].className.indexOf('autoplay')!== -1) {
+      slides[slideNumber].className.indexOf('autoplay') !== -1) {
       var video = slides[slideNumber].querySelector('video');
       if (video) {
         video.play();
@@ -171,7 +179,7 @@
     if ('' !== slideId && isListMode()) {
       e.preventDefault();
 
-      if(e.target.tagName === 'BUTTON' && e.target.className === 'cb') {
+      if (e.target.tagName === 'BUTTON' && e.target.className === 'cb') {
         toggleSlide(e.target.parentNode);
       } else {
         // NOTE: we should update hash to get things work properly
@@ -195,7 +203,9 @@
   // Increases inner navigation by adding 'active' class to next inactive inner navigation item
   function increaseInnerNavigation(slideNumber) {
     // Shortcut for slides without inner navigation
-    if (true !== slideList[slideNumber].hasInnerNavigation) { return -1; }
+    if (true !== slideList[slideNumber].hasInnerNavigation) {
+      return -1;
+    }
 
     var activeNodes = document.querySelectorAll(getSlideHash(slideNumber) + ' .active'),
       // NOTE: we assume there is no other elements in inner navigation
@@ -211,14 +221,14 @@
 
   function lognotes(slideNumber) {
     if (window.console && slideList[slideNumber]) {
-      var notes = document.querySelector('#' +slideList[slideNumber].id + ' .notes');
+      var notes = document.querySelector('#' + slideList[slideNumber].id + ' .notes');
       if (notes) {
-        console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+        console.info(notes.innerHTML.replace(/\n\s+/g, '\n'));
       }
-      if (slideList[slideNumber+1]) {
-        var next = document.querySelector('#' +slideList[slideNumber + 1].id + ' header');
+      if (slideList[slideNumber + 1]) {
+        var next = document.querySelector('#' + slideList[slideNumber + 1].id + ' header');
         if (next) {
-          next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
+          next = next.innerHTML.replace(/^\s+|<[^>]+>/g, '');
           console.info('NEXT: ' + next);
         }
       }
@@ -228,7 +238,7 @@
 
   // Event handlers
 
-  window.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('DOMContentLoaded', function() {
     if (!isListMode()) {
       // "?full" is present without slide hash, so we should display first slide
       if (-1 === getCurrentSlideNumber()) {
@@ -239,7 +249,7 @@
     }
   }, false);
 
-  window.addEventListener('popstate', function (e) {
+  window.addEventListener('popstate', function(e) {
     if (isListMode()) {
       enterListMode();
       scrollToSlide(getCurrentSlideNumber());
@@ -248,16 +258,20 @@
     }
   }, false);
 
-  window.addEventListener('resize', function (e) {
+  window.addEventListener('resize', function(e) {
     if (!isListMode()) {
       applyTransform(getTransform());
     }
   }, false);
 
-  document.addEventListener('keydown', function (e) {
-    if (!keysalive) { return; }
+  document.addEventListener('keydown', function(e) {
+    if (!keysalive) {
+      return;
+    }
     // Shortcut for alt, shift and meta keys
-    if (e.altKey || e.ctrlKey || e.metaKey) { return; }
+    if (e.altKey || e.ctrlKey || e.metaKey) {
+      return;
+    }
 
     var currentSlideNumber = getCurrentSlideNumber();
     switch (e.which) {
@@ -271,7 +285,7 @@
 
           updateProgress(currentSlideNumber);
         }
-      break;
+        break;
 
       case 27: // Esc
         if (!isListMode()) {
@@ -281,7 +295,7 @@
           enterListMode();
           scrollToSlide(currentSlideNumber);
         }
-      break;
+        break;
 
       case 33: // PgUp
       case 38: // Up
@@ -292,7 +306,7 @@
 
         currentSlideNumber--;
         goToSlide(currentSlideNumber);
-      break;
+        break;
 
       case 34: // PgDown
       case 40: // Down
@@ -304,29 +318,28 @@
         // Only go to next slide if current slide have no inner
         // navigation or inner navigation is fully shown
         // NOTE: But first of all check if there is no current slide
-        if (
-          -1 === currentSlideNumber ||
+        if (-1 === currentSlideNumber ||
           !slideList[currentSlideNumber].hasInnerNavigation ||
           -1 === increaseInnerNavigation(currentSlideNumber)
         ) {
           currentSlideNumber++;
           goToSlide(currentSlideNumber);
         }
-      break;
+        break;
 
       case 36: // Home
         e.preventDefault();
 
         currentSlideNumber = 0;
         goToSlide(currentSlideNumber);
-      break;
+        break;
 
       case 35: // End
         e.preventDefault();
 
         currentSlideNumber = slideList.length - 1;
         goToSlide(currentSlideNumber);
-      break;
+        break;
 
       case 9: // Tab = +1; Shift + Tab = -1
       case 32: // Space = +1; Shift + Space = -1
@@ -334,10 +347,10 @@
 
         currentSlideNumber += e.shiftKey ? -1 : 1;
         goToSlide(currentSlideNumber);
-      break;
+        break;
       case 78:
         slides[currentSlideNumber].classList.toggle('peek');
-      break;
+        break;
       default:
         // Behave as usual
     }
@@ -346,7 +359,7 @@
   document.addEventListener('click', dispatchSingleSlideMode, false);
   document.addEventListener('touchend', dispatchSingleSlideMode, false);
 
-  document.addEventListener('touchstart', function (e) {
+  document.addEventListener('touchstart', function(e) {
     if (!isListMode()) {
       var currentSlideNumber = getCurrentSlideNumber(),
         x = e.touches[0].pageX;
@@ -360,7 +373,7 @@
     }
   }, false);
 
-  document.addEventListener('touchmove', function (e) {
+  document.addEventListener('touchmove', function(e) {
     if (!isListMode()) {
       e.preventDefault();
     }
@@ -370,19 +383,20 @@
 
 function goFullScreen() {
   document.fullscreenEnabled = document.fullscreenEnabled ||
-  document.mozFullScreenEnabled ||
-  document.documentElement.webkitRequestFullScreen;
-  function requestFullscreen( element ) {
-    if ( element.requestFullscreen ) {
+    document.mozFullScreenEnabled ||
+    document.documentElement.webkitRequestFullScreen;
+
+  function requestFullscreen(element) {
+    if (element.requestFullscreen) {
       element.requestFullscreen();
-    } else if ( element.mozRequestFullScreen ) {
+    } else if (element.mozRequestFullScreen) {
       element.mozRequestFullScreen();
-    } else if ( element.webkitRequestFullScreen ) {
-      element.webkitRequestFullScreen( Element.ALLOW_KEYBOARD_INPUT );
+    } else if (element.webkitRequestFullScreen) {
+      element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
     }
   }
-  if ( document.fullscreenEnabled ) {
-    requestFullscreen( document.documentElement );
+  if (document.fullscreenEnabled) {
+    requestFullscreen(document.documentElement);
   }
 }
 
@@ -390,13 +404,13 @@ var lang = 'en-US';
 try {
   lang = new URL(window.location).searchParams.get('lang');
 } catch (ex) {
- // searchParams isn't supported in all browsers
+  // searchParams isn't supported in all browsers
 }
 
 // Pre-selects the correct current language on the dropdown menu
 document.getElementById('langMenuId').value = lang;
 
-function changeLanguage(){
+function changeLanguage() {
   var langObj = document.getElementById('langMenuId');
   document.documentElement.lang = langObj.value;
 
