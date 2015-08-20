@@ -675,7 +675,7 @@ ul.inline li:last-child::after {
   bottom: 15px;
 }
 .full .notes {
-  bottom: 15px;
+  bottom: 70px;
 }
 
 /* Live demos */
