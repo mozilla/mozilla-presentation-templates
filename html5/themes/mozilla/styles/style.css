@@ -773,3 +773,7 @@ ul.inline li:last-child::after {
   text-align: center;
   bottom: 36px;
 }
+
+.list #langMenuDivId {
+  display: none;
+}
