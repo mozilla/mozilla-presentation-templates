@@ -765,6 +765,9 @@ ul.inline li:last-child::after {
   display: block;
 }
 
+#langMenuId {
+  pointer-events: auto;
+}
 
 #langMenuDivId {
   position: absolute;
@@ -772,4 +775,5 @@ ul.inline li:last-child::after {
   right: 0px;
   text-align: center;
   bottom: 36px;
+  pointer-events: none;
 }
