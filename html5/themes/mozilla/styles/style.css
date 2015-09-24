@@ -777,3 +777,7 @@ ul.inline li:last-child::after {
   bottom: 36px;
   pointer-events: none;
 }
+
+.list #langMenuDivId {
+  display: none;
+}
