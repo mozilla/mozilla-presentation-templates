@@ -14,6 +14,6 @@ Changes in this version:
 * In list mode, each slide has a "x" button to turn it on and off. This does not persist though, so when you reload your slides, it will make them all active again (TODO I guess)
 * Support for multilingual slides, with URLs that update. Toggle the menu option to get the text in your desired language. (only in HTML5 slidedeck)
 
-Next steps: 
+Next steps:dotfies.org/swipty.org 
 
 * Persist Toggle slides feature
