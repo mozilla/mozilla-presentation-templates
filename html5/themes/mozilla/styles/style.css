@@ -394,6 +394,7 @@ blockquote .quotesource {
   float:left;
   padding:80px 0 80px 100px;
   background:#585A5E url(../images/bg-darkgrey-2.png) fixed;
+  background-size: cover;
   }
 
 /* Caption */
